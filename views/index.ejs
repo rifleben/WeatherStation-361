@@ -4,14 +4,14 @@
 <div class="container">
     <div class ="starter-template">
         <h1>Weather Station</h1>
-        <p class="lead">Enter a city to get the weather</p>
+        <p class="lead">Know your weather.</p>
     </div>
     <form action="/"  method="post">
         <div class="form-group">
             <label for="city">City:</label>
-            <input class= "form-control" type="text" name="city" id="city">
+            <input class= "form-control" type="text" name="city" id="city" autocomplete="off">
         </div>
-        <button class = "btn btn-primary" type="submit" value="Submit">Submit</button>
+        <button class = "btn btn-sm btn-default" type="submit" value="Submit">Get Weather</button>
     </form>
 </div>
 <%- include('partials/footer')%>
