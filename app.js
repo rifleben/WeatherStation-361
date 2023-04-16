@@ -1,5 +1,6 @@
 const express = require("express");
 const https = require("https");
+const axios = require("axios");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 
@@ -20,29 +21,20 @@ app.post("/", async function(req, res){
         console.log(req.body.city);
         const apiKey = "7fd6ee5501c748e3b7a73000233003";
         cityName = req.body.city;
-        const url = "https://api.weatherapi.com/v1/current.json?key=7fd6ee5501c748e3b7a73000233003&q=" + cityName
-        https.get(url, function(response){
-            console.log(response.statusCode);
-            if (response.statusCode === 400) {
-                res.redirect("/");
-            } else {
-                response.on("data", function(data){
-                    const weatherData = JSON.parse(data);
-                    console.log (weatherData);
-                    const temp = weatherData.current.temp_c;
-                    const weatherDescription = weatherData.current.condition.text;
-                    const icon = weatherData.current.condition.icon;
-                    res.write("<h1>The temperature in " + cityName + " is " + temp + " degrees Celcius.</h1>");
-                    res.write("<p>The weather is currently " + weatherDescription + "</p>");
-                    res.write("<img src=" + icon + ">");
-                    res.send();
-                });
-            }
-        });
-    }catch(err){
-        res.send(err);
+        const url = "https://api.weatherapi.com/v1/current.json"
+        const params = {key: apiKey, q: cityName};
+        let weatherInfo = await axios.get(url, {params});
+        let weather = weatherInfo.data;
+        res.write("<h1>The weather in " + weather.location.name + " is " + weather.current.condition.text + "</h1>");
+        res.write("<h1>The temperature is " + weather.current.temp_c + " degrees Celsius</h1>");
+        res.write("<img src=" + weather.current.condition.icon + ">");
+        res.send();
+        
+    } catch (error) {
+        console.error(error);
     }
 });
+
 
 
 app.listen(3000, function(){
