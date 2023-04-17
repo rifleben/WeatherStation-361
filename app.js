@@ -1,5 +1,4 @@
 const express = require("express");
-const https = require("https");
 const axios = require("axios");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -25,10 +24,8 @@ app.post("/", async function(req, res){
         const params = {key: apiKey, q: cityName};
         let weatherInfo = await axios.get(url, {params});
         let weather = weatherInfo.data;
-        res.write("<h1>The weather in " + weather.location.name + " is " + weather.current.condition.text + "</h1>");
-        res.write("<h1>The temperature is " + weather.current.temp_c + " degrees Celsius</h1>");
-        res.write("<img src=" + weather.current.condition.icon + ">");
-        res.send();
+
+        res.render("weather", {pageTitle: cityName, cityName: cityName})
         
     } catch (error) {
         console.error(error);

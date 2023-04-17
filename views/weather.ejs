@@ -1,1 +1,42 @@
-<!-- To be our standardized weather template -->
+<%- include('partials/header') %> <%- include('partials/nav') %>
+
+<div class="container">
+  <div class="starter-template">
+    <h1><%= cityName %></h1>
+    <p class="lead">Know your weather.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">Details</h3>
+        </div>
+        <div class="panel-body">
+          <p class="text-center">Text box 1</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">Weather</h3>
+        </div>
+        <div class="panel-body">
+          <p>Text box 1</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">Forecast</h3>
+        </div>
+        <div class="panel-body">
+          <p>Text box 1</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer')%>
