@@ -24,8 +24,13 @@ app.post("/", async function(req, res){
         const params = {key: apiKey, q: cityName};
         let weatherInfo = await axios.get(url, {params});
         let weather = weatherInfo.data;
-
-        res.render("weather", {pageTitle: cityName, cityName: cityName})
+        console.log(weather);
+        let temp_c = weather.current.temp_c;
+        let condition = weather.current.condition.text;
+        res.render("weather", {
+            pageTitle: cityName, cityName: cityName, 
+            temp_c: temp_c, condition: condition,
+        icon: weather.current.condition.icon})
         
     } catch (error) {
         console.error(error);

@@ -7,7 +7,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">Details</h3>
@@ -16,18 +16,20 @@
           <p class="text-center">Text box 1</p>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
+    </div> -->
+    <div class="col-md-4 col-md-offset-4">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">Weather</h3>
         </div>
         <div class="panel-body">
-          <p>Text box 1</p>
+          <h2 class="text-center"><%= temp_c %>c</h4>
+            <p class="text-center"><%= condition %></p>
+            <img style="filter:grayscale(100%)"class="center-block" src="<%= icon %>">
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">Forecast</h3>
@@ -36,7 +38,7 @@
           <p>Text box 1</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <%- include('partials/footer')%>
