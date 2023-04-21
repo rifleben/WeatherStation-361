@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,7 +20,7 @@ app.get("/about", function(req, res) {
 app.post("/", async function(req, res){
     try{
         console.log(req.body.city);
-        const apiKey = "7fd6ee5501c748e3b7a73000233003";
+        const apiKey = process.env.API_KEY;
         cityName = req.body.city;
         const url = "https://api.weatherapi.com/v1/current.json"
         const params = {key: apiKey, q: cityName};
