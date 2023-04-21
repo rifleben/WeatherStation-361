@@ -40,3 +40,16 @@ footer{
   padding: 20px;
   margin-bottom: 10px; /* Add margin to bottom of each box */
 }
+
+.conditionText {
+  margin-bottom: 0px;
+  text-transform: capitalize;
+}
+
+.list-group{
+  display:inline-block;
+}
+
+.toggle:focus {
+  outline: none;
+}

@@ -12,8 +12,9 @@ app.get("/", function(req, res){
     res.render("index", {pageTitle: "Weather App"});
 }); 
 
-
-
+app.get("/about", function(req, res) {
+    res.render("about", {pageTitle: "About"});
+});
 
 app.post("/", async function(req, res){
     try{
@@ -30,7 +31,9 @@ app.post("/", async function(req, res){
         res.render("weather", {
             pageTitle: cityName, cityName: cityName, 
             temp_c: temp_c, condition: condition,
-        icon: weather.current.condition.icon})
+            icon: weather.current.condition.icon,
+            temp_f: weather.current.temp_f,
+            })
         
     } catch (error) {
         console.error(error);

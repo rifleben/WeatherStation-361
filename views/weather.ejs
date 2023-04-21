@@ -23,8 +23,8 @@
           <h3 class="panel-title text-center">Weather</h3>
         </div>
         <div class="panel-body">
-          <h2 class="text-center"><%= temp_c %>°c</h4>
-            <p class="text-center"><%= condition %></p>
+          <h2 id="displayTemp" class="text-center"><%= temp_c %>°c</h4>
+            <p class="text-center conditionText"><%= condition %></p>
             <img style="filter:grayscale(100%)"class="center-block" src="<%= icon %>">
         </div>
       </div>
@@ -40,5 +40,25 @@
       </div>
     </div> -->
   </div>
+  <button class="btn btn-sm btn-default center-block toggle" id="toggle">Change to F°</button>
+  
+  <script>
+    const toggleBtn = document.getElementById('toggle');
+    let isCelcius = true;
+  
+    toggleBtn.addEventListener('click', function() {
+      isCelcius = !isCelcius; // toggle the unit
+      const displayTemp = document.getElementById('displayTemp');
+      const buttonText = document.getElementById('toggle');
+      if (isCelcius) {
+        displayTemp.innerText = <%= temp_c %> + "°c"; // update temperature display to Fahrenheit
+        buttonText.innerText = "Change to F°";
+      } else {
+        displayTemp.innerText = <%= temp_f %> + "°f"; // update temperature display to Celsius
+        buttonText.innerText = "Change to C°";
+      }
+    });
+  </script>
+
 </div>
 <%- include('partials/footer')%>
