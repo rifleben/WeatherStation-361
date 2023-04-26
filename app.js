@@ -22,11 +22,15 @@ app.post("/", async function(req, res){
         console.log(req.body.city);
         const apiKey = process.env.API_KEY;
         cityName = req.body.city;
-        const url = "https://api.weatherapi.com/v1/current.json"
-        const params = {key: apiKey, q: cityName};
+        const url = "https://api.weatherapi.com/v1/forecast.json"
+        const params = {key: apiKey, q: cityName, days: 3};
         let weatherInfo = await axios.get(url, {params});
         let weather = weatherInfo.data;
-        console.log(weather);
+        // console.log(weather);
+        const maxtemp_f = (weather.forecast.forecastday[0].day["maxtemp_f"])
+        const mintemp_f = (weather.forecast.forecastday[0].day["mintemp_f"])
+        const maxtemp_c = (weather.forecast.forecastday[0].day["maxtemp_c"])
+        const mintemp_c = (weather.forecast.forecastday[0].day["mintemp_c"])
         let temp_c = weather.current.temp_c;
         let condition = weather.current.condition.text;
         res.render("weather", {
@@ -34,6 +38,10 @@ app.post("/", async function(req, res){
             temp_c: temp_c, condition: condition,
             icon: weather.current.condition.icon,
             temp_f: weather.current.temp_f,
+            maxtemp_f: maxtemp_f,
+            mintemp_f: mintemp_f,
+            maxtemp_c: maxtemp_c,
+            mintemp_c: mintemp_c,
             })
         
     } catch (error) {

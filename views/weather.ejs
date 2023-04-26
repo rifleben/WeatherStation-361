@@ -7,7 +7,7 @@
   </div>
 
   <div class="row">
-    <!-- <div class="col-md-4">
+    <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">Alerts</h3>
@@ -16,8 +16,8 @@
           <p class="text-center">Text box 1</p>
         </div>
       </div>
-    </div> -->
-    <div class="col-md-4 col-md-offset-4"> <!-- col-md-offset-4 to be removed -->
+    </div>
+    <div class="col-md-4"> <!-- col-md-offset-4 to be removed -->
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">Weather</h3>
@@ -29,16 +29,18 @@
         </div>
       </div>
     </div>
-    <!-- <div class="col-md-4">
+    <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">Forecast</h3>
         </div>
         <div class="panel-body">
-          <p>Text box 1</p>
+          <p class="text-center">Today: <%= maxtemp_c %> / <%= mintemp_c %> </p>
+          <p class="text-center">Tomorrow: </p>
+          <p class="text-center">Day After: </p>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
   <button class="btn btn-sm btn-default center-block toggle" id="toggle">Change to F°</button>
   
