@@ -31,6 +31,14 @@ app.post("/", async function(req, res){
         const mintemp_f = (weather.forecast.forecastday[0].day["mintemp_f"])
         const maxtemp_c = (weather.forecast.forecastday[0].day["maxtemp_c"])
         const mintemp_c = (weather.forecast.forecastday[0].day["mintemp_c"])
+        const tomorrowMaxtemp_f = (weather.forecast.forecastday[1].day["maxtemp_f"])
+        const tomorrowMintemp_f = (weather.forecast.forecastday[1].day["mintemp_f"])
+        const tomorrowMaxtemp_c = (weather.forecast.forecastday[1].day["maxtemp_c"])
+        const tomorrowMintemp_c = (weather.forecast.forecastday[1].day["mintemp_c"])
+        const dayafterMaxtemp_f = (weather.forecast.forecastday[2].day["maxtemp_f"])
+        const dayafterMintemp_f = (weather.forecast.forecastday[2].day["mintemp_f"])
+        const dayafterMaxtemp_c = (weather.forecast.forecastday[2].day["maxtemp_c"])
+        const dayafterMintemp_c = (weather.forecast.forecastday[2].day["mintemp_c"])
         let temp_c = weather.current.temp_c;
         let condition = weather.current.condition.text;
         res.render("weather", {
@@ -42,6 +50,14 @@ app.post("/", async function(req, res){
             mintemp_f: mintemp_f,
             maxtemp_c: maxtemp_c,
             mintemp_c: mintemp_c,
+            tomorrowMaxtemp_f: tomorrowMaxtemp_f,
+            tomorrowMintemp_f: tomorrowMintemp_f,
+            tomorrowMaxtemp_c: tomorrowMaxtemp_c,
+            tomorrowMintemp_c: tomorrowMintemp_c,
+            dayafterMaxtemp_f: dayafterMaxtemp_f,
+            dayafterMintemp_f: dayafterMintemp_f,
+            dayafterMaxtemp_c: dayafterMaxtemp_c,
+            dayafterMintemp_c: dayafterMintemp_c
             })
         
     } catch (error) {

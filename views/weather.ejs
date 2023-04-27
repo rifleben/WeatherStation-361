@@ -35,9 +35,9 @@
           <h3 class="panel-title text-center">Forecast</h3>
         </div>
         <div class="panel-body">
-          <p class="text-center">Today: <%= maxtemp_c %> / <%= mintemp_c %> </p>
-          <p class="text-center">Tomorrow: </p>
-          <p class="text-center">Day After: </p>
+          <p id="today" class="text-center">Today: <%= maxtemp_c %>°c / <%= mintemp_c %>°c </p>
+          <p id="tomorrow" class="text-center">Tomorrow: <%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c</p>
+          <p id="dayafter" class="text-center">Day After: <%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c</p>
         </div>
       </div>
     </div>
@@ -51,12 +51,21 @@
     toggleBtn.addEventListener('click', function() {
       isCelcius = !isCelcius; // toggle the unit
       const displayTemp = document.getElementById('displayTemp');
+      const today = document.getElementById('today');
+      const tomorrow = document.getElementById('tomorrow');
+      const dayafter = document.getElementById('dayafter');
       const buttonText = document.getElementById('toggle');
       if (isCelcius) {
         displayTemp.innerText = <%= temp_c %> + "°c"; // update temperature display to Fahrenheit
+        today.innerText = "Today: <%= maxtemp_c %>°c / <%= mintemp_c %>°c";
+        tomorrow.innerText = "Tomorrow: <%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c";
+        dayafter.innerText = "Day After: <%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c";
         buttonText.innerText = "Change to F°";
       } else {
         displayTemp.innerText = <%= temp_f %> + "°f"; // update temperature display to Celsius
+        today.innerText= "Today: <%= maxtemp_f %>°f / <%= mintemp_f %>°f";
+        tomorrow.innerText = "Tomorrow: <%= tomorrowMaxtemp_f %>°f / <%= tomorrowMintemp_f %>°f";
+        dayafter.innerText = "Day After: <%= dayafterMaxtemp_f %>°f / <%= dayafterMintemp_f %>°f";
         buttonText.innerText = "Change to C°";
       }
     });
