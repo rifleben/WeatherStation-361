@@ -23,8 +23,9 @@
           <h3 class="panel-title text-center">Weather</h3>
         </div>
         <div class="panel-body">
-          <h2 id="displayTemp" class="text-center"><%= temp_c %>°c</h4>
-            <p class="text-center conditionText"><%= condition %></p>
+          <h1 id="displayTemp" class="text-center"><%= temp_c %>°c</h1>
+            <h3 class="text-center conditionText"><%= condition %></h3>
+            <p></p>
             <img style="filter:grayscale(100%)"class="center-block" src="<%= icon %>">
         </div>
       </div>
@@ -35,9 +36,12 @@
           <h3 class="panel-title text-center">Forecast</h3>
         </div>
         <div class="panel-body">
-          <p id="today" class="text-center">Today: <%= maxtemp_c %>°c / <%= mintemp_c %>°c </p>
-          <p id="tomorrow" class="text-center">Tomorrow: <%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c</p>
-          <p id="dayafter" class="text-center">Day After: <%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c</p>
+          <h5 class="text-center">Today:</h5>
+          <p id="today" class="text-center"><%= maxtemp_c %>°c / <%= mintemp_c %>°c </p>
+          <h5 class="text-center">Tomorrow:</h5>
+          <p id="tomorrow" class="text-center"><%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c</p>
+          <h5 class="text-center">Day After:</h5>
+          <p id="dayafter" class="text-center"><%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c</p>
         </div>
       </div>
     </div>
@@ -57,15 +61,15 @@
       const buttonText = document.getElementById('toggle');
       if (isCelcius) {
         displayTemp.innerText = <%= temp_c %> + "°c"; // update temperature display to Fahrenheit
-        today.innerText = "Today: <%= maxtemp_c %>°c / <%= mintemp_c %>°c";
-        tomorrow.innerText = "Tomorrow: <%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c";
-        dayafter.innerText = "Day After: <%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c";
+        today.innerText = "<%= maxtemp_c %>°c / <%= mintemp_c %>°c";
+        tomorrow.innerText = "<%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c";
+        dayafter.innerText = "<%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c";
         buttonText.innerText = "Change to F°";
       } else {
         displayTemp.innerText = <%= temp_f %> + "°f"; // update temperature display to Celsius
-        today.innerText= "Today: <%= maxtemp_f %>°f / <%= mintemp_f %>°f";
-        tomorrow.innerText = "Tomorrow: <%= tomorrowMaxtemp_f %>°f / <%= tomorrowMintemp_f %>°f";
-        dayafter.innerText = "Day After: <%= dayafterMaxtemp_f %>°f / <%= dayafterMintemp_f %>°f";
+        today.innerText= "<%= maxtemp_f %>°f / <%= mintemp_f %>°f";
+        tomorrow.innerText = "<%= tomorrowMaxtemp_f %>°f / <%= tomorrowMintemp_f %>°f";
+        dayafter.innerText = "<%= dayafterMaxtemp_f %>°f / <%= dayafterMintemp_f %>°f";
         buttonText.innerText = "Change to C°";
       }
     });

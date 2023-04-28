@@ -17,6 +17,10 @@ app.get("/about", function(req, res) {
     res.render("about", {pageTitle: "About"});
 });
 
+app.get("/contact", function(req, res) {
+    res.render("contact", {pageTitle: "Contact"});
+});
+
 app.post("/", async function(req, res){
     try{
         console.log(req.body.city);
