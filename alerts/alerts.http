@@ -1,0 +1,10 @@
+# Requests for REST Client VSCode extension
+
+### Get all Texas alerts
+http://localhost:3450/alerts/TX
+
+### Get all Colorado alerts
+http://localhost:3450/alerts/CO
+
+### Send INCORRECT request
+http://localhost:3450/alerts/Colorado
