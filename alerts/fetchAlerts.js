@@ -23,19 +23,13 @@ const fetchAllAlerts = async (state) => {
         return response.status
     }
 
-    // parse alert areas, headlines, descriptions
+    // push areas, headline, description object to stateAlerts
     const alertsObject = await response.json();
     for await (const feature of alertsObject.features) {
-
-        const headline = feature.properties.headline;
-        const description = feature.properties.description;
-        const areas = feature.properties.areaDesc;
-
-        // push alert to stateAlerts array
         let alert = {}
-        alert['areas'] = areas;
-        alert['headline'] = headline;
-        alert['description'] = description;
+        alert['areas'] = feature.properties.areaDesc;
+        alert['headline'] = feature.properties.headline;
+        alert['description'] = feature.properties.description;
         stateAlerts.push(alert);
     }
 
