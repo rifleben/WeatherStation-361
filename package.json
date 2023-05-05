@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "alerts": "nodemon alerts/alertsServer.js"
+    "alerts-dev": "nodemon alerts/alertsServer.js",
+    "alerts": "node alerts/alertsServer.js"
   },
   "author": "",
   "license": "ISC",

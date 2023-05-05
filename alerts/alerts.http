@@ -1,10 +1,25 @@
 # Requests for REST Client VSCode extension
 
+
+# GET all alerts in state
+
 ### Get all Texas alerts
-http://localhost:3450/alerts/TX
+http://localhost:3450/alerts/state/TX
 
 ### Get all Colorado alerts
-http://localhost:3450/alerts/CO
+http://localhost:3450/alerts/state/CO
+
+
+
+# GET city alerts
+
+### Get Brown, TX alerts
+http://localhost:3450/alerts/city/Brown-TX
+
+### Get Phillips, CO alerts
+http://localhost:3450/alerts/city/Phillips-CO
+
+
 
 ### Send INCORRECT request
 http://localhost:3450/alerts/Colorado

@@ -14,7 +14,7 @@ const fetchAllAlerts = async (state) => {
             }
         });
     } catch (err) {
-        console.log(`${err}\n`)
+        console.log(`Fetch error: ${err}\n`)
         return;
     }
     if (response.status !== 200) {
