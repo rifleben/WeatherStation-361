@@ -1,7 +1,10 @@
+const path = require("path");
+const states = require(path.resolve(__dirname, "alerts", "states.js"));
 const express = require("express");
 const axios = require("axios");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const { Console } = require("console");
 require('dotenv').config();
 
 const app = express();
@@ -29,8 +32,32 @@ app.post("/", async function(req, res){
         const url = "https://api.weatherapi.com/v1/forecast.json"
         const params = {key: apiKey, q: cityName, days: 3};
         let weatherInfo = await axios.get(url, {params});
+        const region = weatherInfo.data.location.region;
+        const city= weatherInfo.data.location.name;
         let weather = weatherInfo.data;
-        // console.log(weather);
+
+        const alertURL = "http://localhost:3450/alerts/city"
+        let alertParams = `/${city}-${states[region]}`
+        let alertInfo = null;
+        let alertTime = 4000;
+
+        try {
+            alertInfo = await axios.get(alertURL + alertParams, {timeout: alertTime});
+        } catch (err) {
+            console.log(`Alerts server error: ${err}`);
+            alertInfo = "ERROR"
+        }
+        
+        let alert = null;
+        
+        if (alertInfo === "ERROR") {
+            alert = "There was an error fetching alerts from the microservice. Please try again later.";
+        } else {
+            const alerts = alertInfo && alertInfo.type ? alertInfo.data : null;
+            alert = alerts && alerts.length > 0 ? alerts[0].headline : "There are no alerts for this area at this time. Note alerts only work for US cities.";
+        }
+
+
         const maxtemp_f = (weather.forecast.forecastday[0].day["maxtemp_f"])
         const mintemp_f = (weather.forecast.forecastday[0].day["mintemp_f"])
         const maxtemp_c = (weather.forecast.forecastday[0].day["maxtemp_c"])
@@ -61,11 +88,12 @@ app.post("/", async function(req, res){
             dayafterMaxtemp_f: dayafterMaxtemp_f,
             dayafterMintemp_f: dayafterMintemp_f,
             dayafterMaxtemp_c: dayafterMaxtemp_c,
-            dayafterMintemp_c: dayafterMintemp_c
+            dayafterMintemp_c: dayafterMintemp_c,
+            alert: alert
             })
         
     } catch (error) {
-        console.error(error);
+        // console.error(error);
     }
 });
 
