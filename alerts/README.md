@@ -25,3 +25,6 @@ The data will be received in JSON format -- specifically as an array of alert ob
     }
 ]
 ```
+
+## UML sequence diagram
+<img src="UML.png" width="500">
