@@ -49,6 +49,7 @@ app.get('/alerts/city/:city-:state', async (req, res) => {
         if (typeof cityAlerts === 'object') {
             console.log(`Alerts received for ${req.params.city}, ${req.params.state}. Sending...`);
             res.status(200).send(cityAlerts);
+            console.log(cityAlerts)
             console.log('Alerts sent!')
         } 
         

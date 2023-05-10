@@ -53,7 +53,8 @@ app.post("/", async function(req, res){
         if (alertInfo === "ERROR") {
             alert = "There was an error fetching alerts from the microservice. Please try again later.";
         } else {
-            const alerts = alertInfo && alertInfo.type ? alertInfo.data : null;
+            const alerts = alertInfo && alertInfo.data ? alertInfo.data : null;
+            console.log(alerts)
             alert = alerts && alerts.length > 0 ? alerts[0].headline : "There are no alerts for this area at this time. Note alerts only work for US cities.";
         }
 
