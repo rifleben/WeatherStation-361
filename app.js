@@ -24,7 +24,7 @@ app.get("/contact", function(req, res) {
     res.render("contact", {pageTitle: "Contact"});
 });
 
-app.post("/", async function(req, res){
+app.post("/weather", async function(req, res){
     try{
         console.log(req.body.city);
         const apiKey = process.env.API_KEY;
