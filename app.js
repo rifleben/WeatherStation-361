@@ -74,6 +74,7 @@ app.post("/weather", async function(req, res){
         let temp_c = weather.current.temp_c;
         let condition = weather.current.condition.text;
         res.render("weather", {
+            testData: weather,
             pageTitle: cityName, cityName: cityName, 
             temp_c: temp_c, condition: condition,
             icon: weather.current.condition.icon,
