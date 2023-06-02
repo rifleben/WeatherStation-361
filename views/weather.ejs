@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="starter-template">
-    <h1><%= cityName %></h1>
+    <h1><%= weatherData.location.name %></h1>
     <p class="lead">Know your weather.</p>
   </div>
 
@@ -15,7 +15,7 @@
         <div class="panel-body">
           <p class="text-center"><%= alert %></p>
         </div>
-        <p class="text-center"><strong>UV Level:</strong> <%= testData.current.uv  %> <br><em>Protection measures advised at 5+</em></p>
+        <p class="text-center"><strong>UV Level:</strong> <%= weatherData.current.uv  %> <br><em>Protection measures advised at 5+</em></p>
       </div>
     </div>
     <div class="col-md-4">
@@ -24,10 +24,10 @@
           <h3 class="panel-title text-center">Weather</h3>
         </div>
         <div class="panel-body">
-          <h1 id="displayTemp" class="text-center"><%= temp_c %>°c</h1>
-            <h3 class="text-center conditionText"><%= condition %></h3>
+          <h1 id="displayTemp" class="text-center"><%= weatherData.current.temp_c %>°c</h1>
+            <h3 class="text-center conditionText"><%= weatherData.current.condition.text %></h3>
             <p></p>
-            <img style="filter:grayscale(100%)"class="center-block" src="<%= icon %>">
+            <img style="filter:grayscale(100%)"class="center-block" src="<%= weatherData.current.condition.icon %>">
         </div>
       </div>
     </div>
@@ -38,11 +38,11 @@
         </div>
         <div class="panel-body">
           <h5 class="text-center">Today:</h5>
-          <p id="today" class="text-center"><%= maxtemp_c %>°c / <%= mintemp_c %>°c </p>
+          <p id="today" class="text-center"><%= weatherData.forecast.forecastday[0].day["maxtemp_c"] %>°c / <%= weatherData.forecast.forecastday[0].day["mintemp_c"]%>°c </p>
           <h5 class="text-center">Tomorrow:</h5>
-          <p id="tomorrow" class="text-center"><%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c</p>
+          <p id="tomorrow" class="text-center"><%= weatherData.forecast.forecastday[1].day["maxtemp_c"] %>°c / <%= weatherData.forecast.forecastday[1].day["mintemp_c"] %>°c</p>
           <h5 class="text-center">Day After:</h5>
-          <p id="dayafter" class="text-center"><%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c</p>
+          <p id="dayafter" class="text-center"><%= weatherData.forecast.forecastday[2].day["maxtemp_c"] %>°c / <%= weatherData.forecast.forecastday[2].day["mintemp_c"] %>°c</p>
         </div>
       </div>
     </div>
@@ -61,16 +61,16 @@
       const dayafter = document.getElementById('dayafter');
       const buttonText = document.getElementById('toggle');
       if (isCelcius) {
-        displayTemp.innerText = <%= temp_c %> + "°c"; // update temperature display to Fahrenheit
-        today.innerText = "<%= maxtemp_c %>°c / <%= mintemp_c %>°c";
-        tomorrow.innerText = "<%= tomorrowMaxtemp_c %>°c / <%= tomorrowMintemp_c %>°c";
-        dayafter.innerText = "<%= dayafterMaxtemp_c %>°c / <%= dayafterMintemp_c %>°c";
+        displayTemp.innerText = "<%= weatherData.current.temp_c %>" + "°c"; // update temperature display to Fahrenheit
+        today.innerText = "<%= weatherData.forecast.forecastday[0].day['maxtemp_c'] %>°c / <%= weatherData.forecast.forecastday[0].day['mintemp_c'] %>°c";
+        tomorrow.innerText = "<%= weatherData.forecast.forecastday[1].day['maxtemp_c'] %>°c / <%= weatherData.forecast.forecastday[1].day['mintemp_c'] %>°c";
+        dayafter.innerText = "<%= weatherData.forecast.forecastday[2].day['maxtemp_c'] %>°c / <%= weatherData.forecast.forecastday[2].day['mintemp_c'] %>°c";
         buttonText.innerText = "Change to F°";
       } else {
-        displayTemp.innerText = <%= temp_f %> + "°f"; // update temperature display to Celsius
-        today.innerText= "<%= maxtemp_f %>°f / <%= mintemp_f %>°f";
-        tomorrow.innerText = "<%= tomorrowMaxtemp_f %>°f / <%= tomorrowMintemp_f %>°f";
-        dayafter.innerText = "<%= dayafterMaxtemp_f %>°f / <%= dayafterMintemp_f %>°f";
+        displayTemp.innerText = "<%= weatherData.current.temp_f %>" + "°f"; // update temperature display to Celsius
+        today.innerText= "<%= weatherData.forecast.forecastday[0].day['maxtemp_f'] %>°f / <%= weatherData.forecast.forecastday[0].day['mintemp_f'] %>°f";
+        tomorrow.innerText = "<%= weatherData.forecast.forecastday[1].day['maxtemp_f'] %>°f / <%= weatherData.forecast.forecastday[1].day['mintemp_f'] %>°f";
+        dayafter.innerText = "<%= weatherData.forecast.forecastday[2].day['maxtemp_f'] %>°f / <%= weatherData.forecast.forecastday[2].day['mintemp_f'] %>°f";
         buttonText.innerText = "Change to C°";
       }
     });
