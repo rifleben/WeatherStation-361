@@ -1,11 +1,36 @@
 # Weather Station
 
-This is a simple web application that allows usewr to input a ctity name and get current weather information for that city. The app is built using Node.js and Express.js on the backend and uses weatherAPI to get the weather information. The front end is built using HTML, CSS (Bootstrap) and JavaScript (using EJS for templating).
+This is a weather application that provides real-time weather information for cities. The application utilizes an external weather API to fetch weather data and a microservice to retrieve alerts for specific areas. This readme will guide you through the setup and usage of the app.
+
+## Technologies Used
+- HTML/CSS 
+- Bootstrap
+- JavaScript
+- Node.js
+- Express.js
+- EJS
+- Axios
+- Weather API
 
 ## Installation
+1. Clone the repository
+2. Open a terminal and navigate to the project directory
+3. Run `npm install` to install the dependencies
 
-Clone the repository
-Run npm install to install dependencies
-Create a .env file in the root directory and add your Weather API key. Example: API_KEY=your_api_key_here
-Run npm start to start the server
-Open the app in your browser at http://localhost:3000
+## Configuration
+1. Create a `.env` file in the root directory
+2. Open the .env file and replace <YOUR_API_KEY> with your API key from the weather service provider.
+
+## Usage
+1. Open a terminal and navigate to the project directory
+2. Run `npm start` to start the server
+3. Open a browser and navigate to `localhost:3000`
+4. Enter a city name in the search bar and click the search button
+
+## Dependencies
+- axios
+- path
+- express
+- ejs
+- dotenv
+
